@@ -6,10 +6,10 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import org.hexleo.webfetch.WebFetch;
-import org.hexleo.webfetch.db.HashtableMemoryDB;
 import org.hexleo.webfetch.download.Page;
 import org.hexleo.webfetch.download.Request;
 import org.hexleo.webfetch.download.URLDownloader;
+import org.hexleo.webfetch.handler.HashtableMemoryDB;
 import org.hexleo.webfetch.http.HttpClient;
 import org.hexleo.webfetch.http.HttpClientFactory;
 import org.hexleo.webfetch.parser.URLParser;
@@ -123,7 +123,7 @@ public class HttpTest {
 			.setReadTimeout(20*1000)
 			.setThreadSize(2)
 			.setMaxTaskSize(-1)
-			.setDB(HashtableMemoryDB.getInstance())
+			.setPageHandler(HashtableMemoryDB.getInstance())
 			.setRetryTimes(0)
 			.start();
 		try {
