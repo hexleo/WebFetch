@@ -4,7 +4,7 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.Vector;
 
-import org.hexleo.webfetch.db.DBHandler;
+import org.hexleo.webfetch.db.PageHandler;
 import org.hexleo.webfetch.download.Request;
 import org.hexleo.webfetch.http.HttpClientFactory;
 import org.hexleo.webfetch.parser.URLParser;
@@ -111,9 +111,9 @@ public class WebFetch {
 		return this;
 	}
 	
-	public WebFetch setDB(DBHandler db){
+	public WebFetch setPageHandler(PageHandler pageHandler){
 		if(!mIsStart)
-			mTaskSchedule.setDB(db);
+			mTaskSchedule.setPageHandler(pageHandler);
 		return this;
 	}
 	public WebFetch setURLParser(URLParser parser){

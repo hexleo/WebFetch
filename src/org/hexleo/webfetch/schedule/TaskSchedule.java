@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Vector;
 import java.util.regex.Pattern;
 
-import org.hexleo.webfetch.db.DBHandler;
+import org.hexleo.webfetch.db.PageHandler;
 import org.hexleo.webfetch.db.HashtableMemoryDB;
 import org.hexleo.webfetch.download.Request;
 import org.hexleo.webfetch.download.URLDownloader;
@@ -39,7 +39,7 @@ public class TaskSchedule {
 	//visited manager
 	private VisitedURLManager mVisitedURL;
 	//db
-	private DBHandler mDB;
+	private PageHandler mPageHandler;
 	//parser
 	private URLParser mURLParser;
 	//private boolean mIsClosed;
@@ -49,7 +49,7 @@ public class TaskSchedule {
 	//private int tempCount = 0;
 	
 	public TaskSchedule(){
-		this.mDB = HashtableMemoryDB.getInstance(); // db default implement
+		this.mPageHandler = HashtableMemoryDB.getInstance(); // db default implement
 		this.mURLParser = new WebFetchParser();// default parser
 		this.mFinishRequestQueue = new LinkedList<Request>();
 		this.mVisitedURL = new VisitedURLManager();
@@ -65,9 +65,9 @@ public class TaskSchedule {
 			this.mMaxLayler = maxLayler;
 	}
 	
-	public void setDB(DBHandler mDB){
-		if(!mIsStart && mDB != null)
-			this.mDB = mDB;
+	public void setPageHandler(PageHandler mPageHandler){
+		if(!mIsStart && mPageHandler != null)
+			this.mPageHandler = mPageHandler;
 	}
 	public void setURLParser(URLParser mURLParser){
 		if(!mIsStart)
@@ -106,8 +106,8 @@ public class TaskSchedule {
 			for(int i=0 ; i<PARSE_TASK_THREAD_SIZE ; i++)
 				mURLParserThreads[i].interrupt();
 		}
-		if(mDB != null)
-			mDB.close();
+		if(mPageHandler != null)
+			mPageHandler.close();
 		if(mURLDownloader != null)
 			mURLDownloader.close();
 		mIsStart = false;
@@ -217,8 +217,8 @@ public class TaskSchedule {
 					}
 					mVisitedURL.update(request);
 					if(request.getPage().getStatusCode() == HttpClient.HTTP_OK){
-						if(mDB != null)
-							mDB.finish(request.getPage());
+						if(mPageHandler != null)
+							mPageHandler.finish(request.getPage());
 						if(mParser != null)
 							addRequest(mParser.parse(request)); //a blocking method running in this Thread, and add to new task queue manage by TaskSchedule
 					}else{

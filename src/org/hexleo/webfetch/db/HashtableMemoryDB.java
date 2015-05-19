@@ -11,7 +11,7 @@ import org.hexleo.webfetch.download.Page;
  * @author hexleo
  *
  */
-public class HashtableMemoryDB implements DBHandler {
+public class HashtableMemoryDB implements PageHandler {
 	
 	private static HashtableMemoryDB mDB; 
 	
