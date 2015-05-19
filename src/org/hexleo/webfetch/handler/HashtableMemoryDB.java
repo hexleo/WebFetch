@@ -1,4 +1,4 @@
-package org.hexleo.webfetch.db;
+package org.hexleo.webfetch.handler;
 
 import java.util.Enumeration;
 import java.util.Hashtable;

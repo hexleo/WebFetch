@@ -1,4 +1,4 @@
-package org.hexleo.webfetch.db;
+package org.hexleo.webfetch.handler;
 
 
 import org.hexleo.webfetch.download.Page;
@@ -10,7 +10,7 @@ import org.hexleo.webfetch.download.Page;
  * @author hexleo
  *
  */
-public interface DBHandler {
+public interface PageHandler {
 	
 	//insert to db
 	public boolean finish(Page page);

@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.Vector;
 import java.util.regex.Pattern;
 
-import org.hexleo.webfetch.db.PageHandler;
-import org.hexleo.webfetch.db.HashtableMemoryDB;
 import org.hexleo.webfetch.download.Request;
 import org.hexleo.webfetch.download.URLDownloader;
+import org.hexleo.webfetch.handler.HashtableMemoryDB;
+import org.hexleo.webfetch.handler.PageHandler;
 import org.hexleo.webfetch.http.HttpClient;
 import org.hexleo.webfetch.parser.URLParser;
 import org.hexleo.webfetch.parser.WebFetchParser;

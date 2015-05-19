@@ -4,8 +4,8 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.Vector;
 
-import org.hexleo.webfetch.db.PageHandler;
 import org.hexleo.webfetch.download.Request;
+import org.hexleo.webfetch.handler.PageHandler;
 import org.hexleo.webfetch.http.HttpClientFactory;
 import org.hexleo.webfetch.parser.URLParser;
 import org.hexleo.webfetch.schedule.TaskSchedule;
