@@ -1,4 +1,4 @@
-package org.hexleo.webfetch.download;
+package org.hexleo.webfetch;
 
 public class Page {
 	private String mUrl;

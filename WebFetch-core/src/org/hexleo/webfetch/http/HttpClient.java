@@ -1,6 +1,6 @@
 package org.hexleo.webfetch.http;
 
-import org.hexleo.webfetch.download.Request;
+import org.hexleo.webfetch.Request;
 
 /**
  * blocking method get http page

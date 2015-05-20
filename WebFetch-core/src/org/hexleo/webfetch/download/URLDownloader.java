@@ -14,6 +14,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
+import org.hexleo.webfetch.Request;
 import org.hexleo.webfetch.http.HttpClient;
 import org.hexleo.webfetch.http.HttpClientFactory;
 import org.hexleo.webfetch.schedule.TaskSchedule;

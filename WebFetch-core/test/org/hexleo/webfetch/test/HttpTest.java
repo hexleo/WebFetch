@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
+import org.hexleo.webfetch.Page;
+import org.hexleo.webfetch.Request;
 import org.hexleo.webfetch.WebFetch;
-import org.hexleo.webfetch.download.Page;
-import org.hexleo.webfetch.download.Request;
 import org.hexleo.webfetch.download.URLDownloader;
-import org.hexleo.webfetch.handler.HashtableMemoryDB;
+import org.hexleo.webfetch.handler.DefaultPageHandler;
 import org.hexleo.webfetch.http.HttpClient;
 import org.hexleo.webfetch.http.HttpClientFactory;
 import org.hexleo.webfetch.parser.URLParser;
@@ -100,10 +100,6 @@ public class HttpTest {
 		try {
 			while(true){
 				Thread.sleep(3000);
-				Vector<Page> p = HashtableMemoryDB.getInstance().displayAll();
-				for(Page page : p)
-					Log.i(TAG, "TestTaskSchedule \tstatusCode:"+page.getStatusCode()
-							+"\turl:"+page.getUrl() +" \tcontent:"+page.getHtmlContent());
 				break;
 			}
 		} catch (InterruptedException e) {
@@ -123,16 +119,14 @@ public class HttpTest {
 			.setReadTimeout(20*1000)
 			.setThreadSize(2)
 			.setMaxTaskSize(-1)
-			.setPageHandler(HashtableMemoryDB.getInstance())
+			.setPageHandler(new DefaultPageHandler())
 			.setRetryTimes(0)
 			.start();
 		try {
 			while(true){
 				Thread.sleep(3*1000);
-				Vector<Page> pages = HashtableMemoryDB.getInstance().displayAll();
-				for(Page page : pages)
-					Log.i(TAG, "TestWebFetch \tstatusCode:"+page.getStatusCode()
-							+"\turl:"+page.getUrl() +" \tcontent:"+page.getHtmlContent());
+				//Log.i(TAG, "TestWebFetch \tstatusCode:"+page.getStatusCode()
+				//		+"\turl:"+page.getUrl() +" \tcontent:"+page.getHtmlContent());
 				break;
 			}
 		} catch (InterruptedException e) {

@@ -2,7 +2,7 @@ package org.hexleo.webfetch.parser;
 
 import java.util.Vector;
 
-import org.hexleo.webfetch.download.Request;
+import org.hexleo.webfetch.Request;
 
 /**
  * parse the url in html page

@@ -4,7 +4,7 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.hexleo.webfetch.download.Request;
+import org.hexleo.webfetch.Request;
 
 public class WebFetchParser implements URLParser {
 

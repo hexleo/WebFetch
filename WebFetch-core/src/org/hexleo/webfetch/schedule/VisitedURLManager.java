@@ -2,7 +2,7 @@ package org.hexleo.webfetch.schedule;
 
 import java.util.Hashtable;
 
-import org.hexleo.webfetch.download.Request;
+import org.hexleo.webfetch.Request;
 import org.hexleo.webfetch.http.HttpClient;
 
 public class VisitedURLManager {

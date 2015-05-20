@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.Vector;
 import java.util.regex.Pattern;
 
-import org.hexleo.webfetch.download.Request;
+import org.hexleo.webfetch.Request;
 import org.hexleo.webfetch.download.URLDownloader;
-import org.hexleo.webfetch.handler.HashtableMemoryDB;
+import org.hexleo.webfetch.handler.DefaultPageHandler;
 import org.hexleo.webfetch.handler.PageHandler;
 import org.hexleo.webfetch.http.HttpClient;
 import org.hexleo.webfetch.parser.URLParser;
@@ -49,8 +49,6 @@ public class TaskSchedule {
 	//private int tempCount = 0;
 	
 	public TaskSchedule(){
-		this.mPageHandler = HashtableMemoryDB.getInstance(); // db default implement
-		this.mURLParser = new WebFetchParser();// default parser
 		this.mFinishRequestQueue = new LinkedList<Request>();
 		this.mVisitedURL = new VisitedURLManager();
 		this.mIsStart = false;

@@ -9,8 +9,8 @@ import java.net.Proxy;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
-import org.hexleo.webfetch.download.Page;
-import org.hexleo.webfetch.download.Request;
+import org.hexleo.webfetch.Page;
+import org.hexleo.webfetch.Request;
 import org.hexleo.webfetch.util.Log;
 
 /**

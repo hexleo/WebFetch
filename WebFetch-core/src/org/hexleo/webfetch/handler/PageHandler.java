@@ -1,7 +1,7 @@
 package org.hexleo.webfetch.handler;
 
 
-import org.hexleo.webfetch.download.Page;
+import org.hexleo.webfetch.Page;
 
 
 /**
@@ -13,7 +13,7 @@ import org.hexleo.webfetch.download.Page;
 public interface PageHandler {
 	
 	//insert to db
-	public boolean finish(Page page);
+	public void finish(Page page);
 	public void close();
 	
 }

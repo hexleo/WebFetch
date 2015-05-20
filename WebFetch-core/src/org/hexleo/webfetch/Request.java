@@ -1,7 +1,4 @@
-package org.hexleo.webfetch.download;
-
-
-
+package org.hexleo.webfetch;
 
 public class Request {
 	public static final String GET = "GET";
