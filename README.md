@@ -93,7 +93,7 @@ public interface URLParser {
 	public Vector<Request> parse(Request parentPage); 
 }
 ```
-WebFetch使用正则表达式对抽取<a>中指定的URL方法，目的是为减少对第三方的依赖，用户可以自行实现此接口，比如加入jsoup进行分析。  
+WebFetch使用正则表达式抽取`<a>`中`href="..."`指定的URL方法，目的是为减少对第三方的依赖，用户可以自行实现此接口，比如加入jsoup进行分析。  
 `Request`提供`public static Request createSub(String mUrl ,  Request parentRequest)`方法，实现处理那些相对地址情况。  
 
 比如：http://abc.def/web/index.html 中存在一个连接`<a href="./page.html">`，抓取到的URL为`./page.html`而用此URL发起的http请求是错误的，使用`Request.createSub`方法可以修正此URL为http://abc.def/web/page.html 。  
