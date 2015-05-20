@@ -104,7 +104,7 @@ WebFetch使用正则表达式抽取`<a>`中`href="..."`指定的URL方法，目�
 public class WebFetch {
 	...
 	//设置网络爬虫的线程数量，与页面处理分离，实现专一的网络爬取工作，默认线程数为5
-	public WebFetch setThreadSize(int max)；
+	public WebFetch setThreadSize(int max);
 	//设置一个页面的重试次数，默认为不重试
 	public WebFetch setRetryTimes(int times);
 	//代理设置
