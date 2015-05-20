@@ -99,6 +99,7 @@ WebFetch使用正则表达式对抽取<a>中指定的URL方法，目的是为减
 比如：http://abc.def/web/index.html 中存在一个连接`<a href="./page.html">`，抓取到的URL为`./page.html`而用此URL发起的http请求是错误的，使用`Request.createSub`方法可以修正此URL为http://abc.def/web/page.html 。  
 
 * 其它设置项目说明：  
+
 ```java
 public class WebFetch {
 	...
