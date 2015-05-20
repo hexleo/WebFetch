@@ -14,7 +14,7 @@ WebFetch要达到的目标：
 
 使用文档
 ---------
-WebFetch的使用非常简单，让小白用户快速上手，WebFetch默认为用户配置的页面处理方法，默认将抓取到的页面信息使用`System.out.print`输出到控制台（通过配置PageHandler修改默认操作）。   
+WebFetch的使用非常简单，让小白用户快速上手，WebFetch为用户配置默认页面处理方法，默认将抓取到的页面信息使用`System.out.print`输出到控制台（通过配置PageHandler修改默认操作）。   
 
 启动代码：
 
