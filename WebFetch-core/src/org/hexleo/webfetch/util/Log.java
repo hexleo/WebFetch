@@ -1,7 +1,7 @@
 package org.hexleo.webfetch.util;
 
 public class Log {
-	private static final boolean DEBUG = true;
+	private static final boolean DEBUG = false;
 	public static void i(String tag, String msg){
 		if(DEBUG)
 			System.out.println("info \t TAG:"+tag+"\nMSG:("+msg+")");

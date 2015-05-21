@@ -6,11 +6,9 @@ import java.util.regex.Pattern;
 
 import org.hexleo.webfetch.Request;
 import org.hexleo.webfetch.download.URLDownloader;
-import org.hexleo.webfetch.handler.DefaultPageHandler;
 import org.hexleo.webfetch.handler.PageHandler;
 import org.hexleo.webfetch.http.HttpClient;
 import org.hexleo.webfetch.parser.URLParser;
-import org.hexleo.webfetch.parser.WebFetchParser;
 import org.hexleo.webfetch.util.Log;
 
 /**
