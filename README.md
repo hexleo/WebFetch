@@ -29,7 +29,7 @@ webFetch.addBeginTask("https://github.com").start();
 webFetch.close();
 ```
 
-WebFetch再执行`start()`方法后不会阻塞程序执行，可以加入多个网页地址，目前支持http与https，至少需要一个起始地址。  
+WebFetch执行`start()`方法后不会阻塞程序执行，可以加入多个网页地址，目前支持http与https，至少需要一个起始地址。  
 ps 当前版本（webfetch_v0.0.1）稳定运行环境为Java桌面环境
     
     
