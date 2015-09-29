@@ -1,5 +1,10 @@
 package org.hexleo.webfetch;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 public class Request {
 	public static final String GET = "GET";
 	public static final String POST = "POST";
@@ -21,30 +26,21 @@ public class Request {
 	}
 	
 	public static Request createSub(String mUrl ,  Request parentRequest){
-		//only sub page can use "./"pattern 
-		if(mUrl == null || mUrl.length() == 0 || parentRequest == null)
+		if(mUrl == null){
 			return null;
-		mUrl = mUrl.trim();
-		if(mUrl.indexOf("://") < 0 && mUrl.charAt(0) != '/'){ //match ./123.html  123.html .123.html(x)
-			//test parentPage.url= http://abc.def/second/index.php  sub.url = ./test.php(.test.php)   =>  http://abc.def/second/test.php
-			int tmpSpace=0;
-			if(mUrl.length() >= 2 && mUrl.charAt(0) == '.'){ // match ./123.html 
-				if(mUrl.charAt(1) != '/')
-					return  null; //test: .abc.def  error form
-				tmpSpace=2;
-				
-			}
-			String pUrl = parentRequest.getUrl();
-			int lastSlash = pUrl.lastIndexOf('/');
-			if(lastSlash > 0){
-				if(pUrl.charAt(lastSlash-1) == '/'){ //  parentPage.url = http://abc.def   sub.url = ./123.html or 123.html
-					mUrl = pUrl + "/" + mUrl.substring(tmpSpace);
-				}else{ 
-					mUrl = pUrl.substring(0, lastSlash+1) + mUrl.substring(tmpSpace);  //parentPage.url = http://abc.def/second/ sub.url = ./123.html or 123.html 
-				}
-			}else{
-				return null; //parent page url is error form
-			}
+		}
+		try {
+			URI baseUri = new URI(parentRequest.getUrl());
+			URI absUri = baseUri.resolve(new URI(mUrl));
+			URL absUrl = absUri.toURL();
+			mUrl = absUrl.toString();
+		} catch (URISyntaxException e) {
+			mUrl = null;
+		} catch (MalformedURLException e) {
+			mUrl = null;
+		}
+		if(mUrl == null){
+			return null;
 		}
 		return new Request(mUrl , parentRequest);
 	}
