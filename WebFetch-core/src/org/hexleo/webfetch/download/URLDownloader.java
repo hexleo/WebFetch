@@ -30,6 +30,8 @@ public class URLDownloader {
 	private static final String TAG = URLDownloader.class.toString();
 	private static final boolean DEBUG = false;
 	private static final int DEFAULT_THREAD_SIZE = 10;
+	//pause time for some web site
+	public static int PAUSE_TIME = -1;
 	private int mTaskThreadSize;
 	private int mMaxTaskSize;
 	private int mCurrentTaskSize;
@@ -178,6 +180,9 @@ public class URLDownloader {
 							mTaskSchedule.finishRequest(request);
 					}
 					request = null;
+					if(PAUSE_TIME > 0 ){
+						Thread.sleep(PAUSE_TIME);
+					}
 				}
 			} catch (InterruptedException e) {
 				Log.e(DEBUG , TAG, "TaskThread id:"+this.toString()+"interrupted");

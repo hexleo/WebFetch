@@ -28,14 +28,17 @@ public class HttpClientImpl implements HttpClient {
 	private Proxy mProxy;
 	private int mConnTimeout;
 	private int mReadTimeout;
+	private String mUserAgent;
 	public HttpClientImpl(){
 		this.mConnTimeout = CONN_TIMEOUT;
 		this.mReadTimeout = READ_TIMEOUT;
+		this.mUserAgent = USER_AGENT;
 	}
-	public HttpClientImpl(int mConnTimeout, int mReadTimeout , Proxy mProxy) {
+	public HttpClientImpl(int mConnTimeout, int mReadTimeout , String userAgent , Proxy mProxy) {
 		super();
 		this.mConnTimeout = mConnTimeout;
 		this.mReadTimeout = mReadTimeout;
+		this.mUserAgent = userAgent;
 		this.mProxy = mProxy;
 	}
 	@Override
@@ -55,7 +58,7 @@ public class HttpClientImpl implements HttpClient {
 			connection.setRequestMethod(request.getMethod());
 			connection.setConnectTimeout(this.mConnTimeout);
 			connection.setReadTimeout(this.mReadTimeout);
-			connection.setRequestProperty("User-Agent", USER_AGENT);
+			connection.setRequestProperty("User-Agent", mUserAgent);
 			if(request.getCookie() != null)
 				connection.setRequestProperty("Cookie", request.getCookie());
 			connection.connect();

@@ -12,6 +12,7 @@ public class HttpClientFactory {
 	public static final int HC_DEFAULT = 0;
 	private static int mConnTimeout = 8000; // connection timeout 8s
 	private static int mReadTimeout = 10000; // read inputstream timeout 10s
+	private static String mUserAgent = "webfetch";
 	private static Proxy mProxy = null;
 	
 	public static HttpClient create(){
@@ -22,7 +23,7 @@ public class HttpClientFactory {
 		HttpClient client = null;
 		switch(type){
 		case HC_DEFAULT:
-			client = new HttpClientImpl(mConnTimeout , mReadTimeout , mProxy);
+			client = new HttpClientImpl(mConnTimeout , mReadTimeout , mUserAgent , mProxy);
 			break;
 		}
 		return client;
@@ -33,6 +34,9 @@ public class HttpClientFactory {
 	}
 	public static void setReadTimeout(int timeout){
 		mReadTimeout = timeout>0? timeout: 10000;
+	}
+	public static void setUserAgent(String userAgent){
+		mUserAgent = userAgent;
 	}
 	public static void setProxy(Proxy proxy) {
 		mProxy = proxy;

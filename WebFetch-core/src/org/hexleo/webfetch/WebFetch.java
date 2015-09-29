@@ -19,6 +19,7 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.Vector;
 
+import org.hexleo.webfetch.download.URLDownloader;
 import org.hexleo.webfetch.handler.DefaultPageHandler;
 import org.hexleo.webfetch.handler.PageHandler;
 import org.hexleo.webfetch.http.HttpClientFactory;
@@ -79,13 +80,27 @@ public class WebFetch {
 		return this;
 	}
 	
+	public WebFetch setUserAgent(String userAgent){
+		HttpClientFactory.setUserAgent(userAgent);
+		return this;
+	}
+	
+	/**
+	 * set pause time for each request 
+	 * @param pt
+	 * @return
+	 */
+	public WebFetch setPauseTimeForEachRequest(int pt){
+		URLDownloader.PAUSE_TIME = pt;
+		return this;
+	}
+	
 	/**
 	 * the first layer is max=0 
 	 * @param max
 	 */
 	public WebFetch setMaxPageLayer(int max){
-		if(!mIsStart)
-			mTaskSchedule.setMaxPageLayer(max);
+		mTaskSchedule.setMaxPageLayer(max);
 		return this;
 	}
 	
@@ -95,14 +110,12 @@ public class WebFetch {
 	 * @return
 	 */
 	public WebFetch setMaxTaskSize(int max){
-		if(!mIsStart)
-			mTaskSchedule.setMaxTaskSize(max);
+		mTaskSchedule.setMaxTaskSize(max);
 		return this;
 	}
 	
 	public WebFetch setThreadSize(int max){
-		if(!mIsStart)
-			mTaskSchedule.setThreadSize(max);
+		mTaskSchedule.setThreadSize(max);
 		return this;
 	}
 	
@@ -110,13 +123,11 @@ public class WebFetch {
 	 * @param timeout millisce
 	 */
 	public WebFetch setConnectionTimeout(int timeout){
-		if(!mIsStart)
-			HttpClientFactory.setConnectTimeout(timeout);
+		HttpClientFactory.setConnectTimeout(timeout);
 		return this;
 	}
 	public WebFetch setReadTimeout(int timeout){
-		if(!mIsStart)
-			HttpClientFactory.setReadTimeout(timeout);
+		HttpClientFactory.setReadTimeout(timeout);
 		return this;
 	}
 	
@@ -124,8 +135,7 @@ public class WebFetch {
 		return setProxy(host , port , Proxy.Type.HTTP); // default HTTP
 	}
 	public WebFetch setProxy(String host , int port , Proxy.Type type){
-		if(!mIsStart)
-			HttpClientFactory.setProxy(new Proxy(type , new InetSocketAddress(host , port)));
+		HttpClientFactory.setProxy(new Proxy(type , new InetSocketAddress(host , port)));
 		return this;
 	}
 	
@@ -140,8 +150,7 @@ public class WebFetch {
 		return this;
 	}
 	public WebFetch setRetryTimes(int times){
-		if(!mIsStart)
-			mTaskSchedule.setRetryTimes(times);
+		mTaskSchedule.setRetryTimes(times);
 		return this;
 	}
 	public void start(){
